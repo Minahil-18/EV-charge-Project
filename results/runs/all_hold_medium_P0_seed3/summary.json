@@ -1,0 +1,67 @@
+{
+  "all": {
+    "requests": 1440,
+    "avg_waiting_slots": 3.1805555555555554,
+    "share_fully_served": 0.5430555555555555,
+    "share_never_started": 0.16805555555555557,
+    "total_energy_kwh": 12156.0,
+    "total_idle_slots": 1071,
+    "hold_decisions": 611,
+    "total_utility_before_penalty": 22451.0,
+    "total_penalty": 0.0,
+    "total_utility_after_penalty": 22451.0,
+    "avg_utility_before_penalty": 15.590972222222222,
+    "avg_utility_after_penalty": 15.590972222222222
+  },
+  "urgent": {
+    "requests": 360,
+    "avg_waiting_slots": 3.113888888888889,
+    "share_fully_served": 0.55,
+    "share_never_started": 0.1361111111111111,
+    "total_energy_kwh": 3090.0,
+    "total_idle_slots": 271,
+    "hold_decisions": 152,
+    "total_utility_before_penalty": 6178.0,
+    "total_penalty": 0.0,
+    "total_utility_after_penalty": 6178.0,
+    "avg_utility_before_penalty": 17.16111111111111,
+    "avg_utility_after_penalty": 17.16111111111111
+  },
+  "flexible": {
+    "requests": 1080,
+    "avg_waiting_slots": 3.202777777777778,
+    "share_fully_served": 0.5407407407407407,
+    "share_never_started": 0.1787037037037037,
+    "total_energy_kwh": 9066.0,
+    "total_idle_slots": 800,
+    "hold_decisions": 459,
+    "total_utility_before_penalty": 16273.0,
+    "total_penalty": 0.0,
+    "total_utility_after_penalty": 16273.0,
+    "avg_utility_before_penalty": 15.067592592592593,
+    "avg_utility_after_penalty": 15.067592592592593
+  },
+  "rule_release": {
+    "requests": 0
+  },
+  "rule_hold": {
+    "requests": 1440,
+    "avg_waiting_slots": 3.1805555555555554,
+    "share_fully_served": 0.5430555555555555,
+    "share_never_started": 0.16805555555555557,
+    "total_energy_kwh": 12156.0,
+    "total_idle_slots": 1071,
+    "hold_decisions": 611,
+    "total_utility_before_penalty": 22451.0,
+    "total_penalty": 0.0,
+    "total_utility_after_penalty": 22451.0,
+    "avg_utility_before_penalty": 15.590972222222222,
+    "avg_utility_after_penalty": 15.590972222222222
+  },
+  "rule_reciprocal": {
+    "requests": 0
+  },
+  "rule_fee_aware": {
+    "requests": 0
+  }
+}

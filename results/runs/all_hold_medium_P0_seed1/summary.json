@@ -1,0 +1,67 @@
+{
+  "all": {
+    "requests": 1440,
+    "avg_waiting_slots": 3.171527777777778,
+    "share_fully_served": 0.5381944444444444,
+    "share_never_started": 0.1673611111111111,
+    "total_energy_kwh": 12273.0,
+    "total_idle_slots": 1047,
+    "hold_decisions": 596,
+    "total_utility_before_penalty": 22697.0,
+    "total_penalty": 0.0,
+    "total_utility_after_penalty": 22697.0,
+    "avg_utility_before_penalty": 15.761805555555556,
+    "avg_utility_after_penalty": 15.761805555555556
+  },
+  "urgent": {
+    "requests": 397,
+    "avg_waiting_slots": 3.1309823677581865,
+    "share_fully_served": 0.5314861460957179,
+    "share_never_started": 0.1712846347607053,
+    "total_energy_kwh": 3393.0,
+    "total_idle_slots": 283,
+    "hold_decisions": 159,
+    "total_utility_before_penalty": 6733.0,
+    "total_penalty": 0.0,
+    "total_utility_after_penalty": 6733.0,
+    "avg_utility_before_penalty": 16.95969773299748,
+    "avg_utility_after_penalty": 16.95969773299748
+  },
+  "flexible": {
+    "requests": 1043,
+    "avg_waiting_slots": 3.186960690316395,
+    "share_fully_served": 0.5407478427612655,
+    "share_never_started": 0.16586768935762225,
+    "total_energy_kwh": 8880.0,
+    "total_idle_slots": 764,
+    "hold_decisions": 437,
+    "total_utility_before_penalty": 15964.0,
+    "total_penalty": 0.0,
+    "total_utility_after_penalty": 15964.0,
+    "avg_utility_before_penalty": 15.305848513902205,
+    "avg_utility_after_penalty": 15.305848513902205
+  },
+  "rule_release": {
+    "requests": 0
+  },
+  "rule_hold": {
+    "requests": 1440,
+    "avg_waiting_slots": 3.171527777777778,
+    "share_fully_served": 0.5381944444444444,
+    "share_never_started": 0.1673611111111111,
+    "total_energy_kwh": 12273.0,
+    "total_idle_slots": 1047,
+    "hold_decisions": 596,
+    "total_utility_before_penalty": 22697.0,
+    "total_penalty": 0.0,
+    "total_utility_after_penalty": 22697.0,
+    "avg_utility_before_penalty": 15.761805555555556,
+    "avg_utility_after_penalty": 15.761805555555556
+  },
+  "rule_reciprocal": {
+    "requests": 0
+  },
+  "rule_fee_aware": {
+    "requests": 0
+  }
+}

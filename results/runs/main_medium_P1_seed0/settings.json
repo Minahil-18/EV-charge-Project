@@ -1,0 +1,22 @@
+{
+  "run_id": "main_medium_P1_seed0",
+  "seed": 0,
+  "scenario": "medium",
+  "policy": "P1",
+  "fee_per_idle_slot": 2.0,
+  "variant": "main",
+  "rule_override": null,
+  "urgent_prior": 0.3,
+  "chargers": 6,
+  "days": 60,
+  "day_slots": 16,
+  "queue_order": "arrival_slot, driver_id",
+  "input_dir": "data/seed_0",
+  "input_files_sha256_16": {
+    "sessions_public.csv": "5f6e8dff7f867f03",
+    "drivers_private.csv": "6a4d1606050d9d23",
+    "chargers.csv": "2626d87ab539d367",
+    "policies.csv": "bfb8e91b500e4ec1",
+    "config.json": "0ebd4c9b5d374ccf"
+  }
+}

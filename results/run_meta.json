@@ -1,0 +1,23 @@
+{
+  "runs": 40,
+  "main_runs": 30,
+  "limit_check_runs": 10,
+  "safety_checks_passed": 721602,
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "scenarios": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "policies": [
+    "P0",
+    "P1"
+  ],
+  "urgent_prior": 0.3
+}
