@@ -271,7 +271,7 @@ with tab_sim:
                     f'<div class="mono" style="margin-top:10px;color:{LIME}">saved: results/runs/{run_id}/'
                     f'{{visits.csv, settings.json, summary.json}}</div>', unsafe_allow_html=True)
     with st.expander(f"Visit-level records · {len(visits):,} rows"):
-        st.dataframe(visits, hide_index=True, width="stretch", height=360)
+        st.dataframe(visits, hide_index=True, use_container_width=True, height=360)
         st.download_button("Download visits.csv", (RUNS / run_id / "visits.csv").read_bytes(),
                            file_name=f"{run_id}_visits.csv")
 
