@@ -15,6 +15,7 @@ from pathlib import Path
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
+import streamlit.components.v1 as components
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
@@ -25,6 +26,7 @@ from theory.calculations import G                         # noqa: E402
 from theory.evolutionary import path as evo_path, payoffs, update  # noqa: E402
 from style import (AMBER, BORDER, CHARGER_SVG, CSS, CYAN, LIME, MUTED, P0_COLOR,  # noqa: E402
                    P1_COLOR, RED, TEXT, TYPE_COLOR, kpi, section, style_fig, tree_svg)
+from station_view import build_scenario, station_height, station_html  # noqa: E402
 
 RESULTS, RUNS, STARTER = ROOT / "results", ROOT / "results" / "runs", ROOT / "starter_data"
 CFG = {"displayModeBar": False}
@@ -118,8 +120,37 @@ st.markdown(f"""
 <span>Mixed · Behavioral</span><span>Repeated games</span><span>Bayesian</span><span>Evolutionary</span></div>
 """, unsafe_allow_html=True)
 
-tab_sim, tab_cmp, tab_gt, tab_evo, tab_mini, tab_find = st.tabs(
-    ["Simulator", "Policy comparison", "Game theory", "Evolution", "Mini case check", "Findings"])
+tab_live, tab_sim, tab_cmp, tab_gt, tab_evo, tab_mini, tab_find = st.tabs(
+    ["Live station", "Simulator", "Policy comparison", "Game theory", "Evolution", "Mini case check", "Findings"])
+
+# ================================================================== LIVE STATION
+with tab_live:
+    st.markdown(section("00 · Live station", "Watch one day play out",
+                        "A miniature of the charging site. Cars arrive, wait in the lane, plug in, and then release "
+                        "or hold the charger idle. Every move is replayed from the saved run files, nothing is made up."),
+                unsafe_allow_html=True)
+    c1, c2, c3 = st.columns([1.1, 1.9, 1.6])
+    l_demand = c1.segmented_control("Demand level", DEMANDS, default="high", key="live_d") or "high"
+    l_mode = c2.segmented_control("Policy", ["P0", "P1", "both"], default="both", key="live_p",
+                                  format_func=lambda p: "Compare P0 vs P1" if p == "both" else POLICY_NAME[p]) or "both"
+    l_seed = c3.segmented_control("Seed", SEEDS, default=0, key="live_s", format_func=lambda s: f"Seed {s}")
+    l_seed = 0 if l_seed is None else l_seed
+    pols = ["P0", "P1"] if l_mode == "both" else [l_mode]
+    runs = {p: load_run(f"main_{l_demand}_{p}_seed{l_seed}") for p in pols}
+    first = runs[pols[0]][0]
+    busy = first.groupby("day").waiting_slots.sum()
+    d1, d2 = st.columns([3, 1.2])
+    l_day = d1.slider("Day of the run", 1, int(first.day.max()), int(busy.idxmax()), key="live_day")
+    d2.markdown(f"<div style='color:{MUTED};font-size:.8rem;padding-top:30px'>Busiest day in {pols[0]}: "
+                f"<b style='color:{LIME}'>day {int(busy.idxmax())}</b> ({int(busy.max())} waiting slots)</div>",
+                unsafe_allow_html=True)
+    chargers = sorted(pd.read_csv(ROOT / "data" / f"seed_{l_seed}" / "chargers.csv").charger_id)
+    scen = [build_scenario(v[v.day == l_day], POLICY_NAME[p], p, float(cfg["fee_per_idle_slot"]))
+            for p, (v, cfg) in runs.items()]
+    components.html(station_html(scen, chargers, l_day), height=station_height(len(scen)), scrolling=True)
+    st.caption("Press Play or Space to run the day. Drag the timeline to jump to any time, and hover a car to see its "
+               "driver type, rule and outcome. Amber cars are urgent drivers and cyan cars are flexible. "
+               "A red dashed ring means the car is full but still holding the charger.")
 
 # ================================================================== SIMULATOR
 with tab_sim:
